@@ -1,0 +1,322 @@
+.auth-desktop {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.auth-desktop .overlap-wrapper {
+    background-color: #ffffff;
+    width: 1440px;
+    height: 1024px;
+}
+
+.auth-desktop .overlap {
+    position: relative;
+    height: 1024px;
+    background: linear-gradient(180deg, rgb(185.94, 57.33, 57.33) 0%, rgb(117.94, 0, 0) 100%);
+}
+
+.auth-desktop .text-wrapper {
+    position: absolute;
+    top: 174px;
+    left: 672px;
+    font-family: "Jockey One-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 90px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.auth-desktop .login-btn {
+    position: absolute;
+    width: 530px;
+    height: 94px;
+    top: 696px;
+    left: 456px;
+    all: unset;
+    box-sizing: border-box;
+}
+
+.auth-desktop .overlap-group {
+    position: relative;
+    width: 528px;
+    height: 94px;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.auth-desktop .div {
+    position: absolute;
+    top: 27px;
+    left: 211px;
+    font-family: "Josefin Sans-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #b93939;
+    font-size: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.auth-desktop .password-tx {
+    position: absolute;
+    width: 532px;
+    height: 94px;
+    top: 380px;
+    left: 455px;
+}
+
+.auth-desktop .div-wrapper {
+    position: relative;
+    width: 530px;
+    height: 94px;
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: #ffffff;
+}
+
+.auth-desktop .text-wrapper-2 {
+    position: absolute;
+    top: 26px;
+    left: 12px;
+    opacity: 0.5;
+    font-family: "Josefin Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.auth-desktop .username-tx {
+    position: absolute;
+    width: 532px;
+    height: 94px;
+    top: 550px;
+    left: 456px;
+}
+
+.auth-desktop .text-wrapper-3 {
+    position: absolute;
+    top: 26px;
+    left: 11px;
+    opacity: 0.5;
+    font-family: "Josefin Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.auth-desktop .image {
+    position: absolute;
+    width: 184px;
+    height: 184px;
+    top: 146px;
+    left: 447px;
+    object-fit: cover;
+}
+.app-home-desktop {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.app-home-desktop .div {
+    background-color: #ffffff;
+    width: 1440px;
+    height: 1024px;
+    position: relative;
+}
+
+.app-home-desktop .overlap-group {
+    width: 272px;
+    left: 0;
+    background-color: #d9d9d9;
+    position: absolute;
+    height: 1024px;
+    top: 0;
+}
+
+.app-home-desktop .text-wrapper {
+    position: absolute;
+    top: 14px;
+    left: 82px;
+    font-family: "Jockey One-Regular", Helvetica;
+    font-weight: 400;
+    color: #b93939;
+    font-size: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.app-home-desktop .logout {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 955px;
+    left: 15px;
+    object-fit: cover;
+}
+
+.app-home-desktop .settings {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 886px;
+    left: 15px;
+    object-fit: cover;
+}
+
+.app-home-desktop .text-wrapper-2 {
+    position: absolute;
+    top: 889px;
+    left: 65px;
+    font-family: "Josefin Sans-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 30px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.app-home-desktop .text-wrapper-3 {
+    position: absolute;
+    top: 129px;
+    left: 65px;
+    font-family: "Josefin Sans-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 30px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.app-home-desktop .text-wrapper-4 {
+    position: absolute;
+    top: 199px;
+    left: 65px;
+    font-family: "Josefin Sans-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 30px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.app-home-desktop .text-wrapper-5 {
+    position: absolute;
+    top: 269px;
+    left: 65px;
+    font-family: "Josefin Sans-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 30px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.app-home-desktop .text-wrapper-6 {
+    position: absolute;
+    top: 339px;
+    left: 65px;
+    font-family: "Josefin Sans-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 30px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.app-home-desktop .text-wrapper-7 {
+    position: absolute;
+    top: 954px;
+    left: 65px;
+    font-family: "Josefin Sans-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 30px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.app-home-desktop .home {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 126px;
+    left: 15px;
+    object-fit: cover;
+}
+
+.app-home-desktop .appointments {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 195px;
+    left: 15px;
+    object-fit: cover;
+}
+
+.app-home-desktop .patients {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 265px;
+    left: 15px;
+    object-fit: cover;
+}
+
+.app-home-desktop .billing {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 335px;
+    left: 15px;
+    object-fit: cover;
+}
+
+.app-home-desktop .logo {
+    position: absolute;
+    width: 58px;
+    height: 58px;
+    top: 14px;
+    left: 12px;
+    object-fit: cover;
+}
+
+.app-home-desktop .overlap {
+    width: 1168px;
+    left: 272px;
+    background-color: #ffffff;
+    position: absolute;
+    height: 1024px;
+    top: 0;
+}
+
+.app-home-desktop .text-wrapper-8 {
+    position: absolute;
+    top: 22px;
+    left: 971px;
+    font-family: "Josefin Sans-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 40px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
