@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
 import './Login.css';
-import './LoginValidater'
+import CredentialCheck from './LoginValidater'
+
 function Login(){
     const [input, setInput] = useState({
         username : '',
         password : ''
     })
-    const [result, setResult] = useState({ })
+    const [result, setResult] = useState({})
+
     const checkCredential = (event) => {
         event.preventDefault();
-        setResult(checkCredential(input));
+        setResult(CredentialCheck(input));
     }
 
     const takeInput = (event) => {
@@ -17,9 +19,15 @@ function Login(){
     }
     return (
         <div>
-            <form onSubmit={checkCredential}>
-                <input type='textbox' placeholder={"Username"} name={"Usernametxt"} onChange={takeInput}/>
-                <input type='password' placeholder={"Password"} name={"Passwordtxt"} onChange={takeInput}/>
+            <form action="" onSubmit={checkCredential}>
+                <div>
+                <input type='textbox' placeholder='Username' name='Username' onChange={takeInput}/>
+                {result.username && <span>{result.username}</span>}
+                </div>
+                <div>
+                <input type='password' placeholder='Password' name='Password' onChange={takeInput}/>
+                {result.password && <span>{result.password}</span>}
+                </div>
                 <button type='submit'>Login</button>
             </form>
         </div>
