@@ -13,20 +13,25 @@ function Patients() {
 
     const findPatientID = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:3006/Patient', input)
-            .then(response => {
-                if (response.data === "Found"){
-                    setPatients(response.data);
-                }else {
-                    alert("No matching data");
-                }
 
-                console.log("loading data")
-            })
-            .catch(error => {
-                console.error('Error fetching patients:', error);
-            });
-    }
+        try {
+            const response = await axios.post('http://localhost:3006/FindPatient', input);
+
+            if (response.data.length > 0) {
+                // Assuming data is an array of patients
+                setPatients(response.data);
+                console.log("Patients found:", response.data);
+            } else {
+                alert("No matching data");
+                console.log("No matching data");
+            }
+
+            console.log("Loading data");
+        } catch (error) {
+            console.error('Error fetching patients:', error);
+        }
+    };
+
 
     const takeInput = (e) => {
         setInput(prev => ({...prev,[e.target.name]: [e.target.value]}))
