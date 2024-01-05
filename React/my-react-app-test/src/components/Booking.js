@@ -10,7 +10,7 @@ function Booking() {
         </head>
 
         <main>
-            <h1>BOOKING</h1>
+            <h1>BOOKINGS</h1>
         </main>
     </>)
 };

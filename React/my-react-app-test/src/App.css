@@ -76,6 +76,16 @@ button {
   color: #FF0000;
 }
 
+.bottom-logout {
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  z-index: 1000;
+  text-align: center;
+}
+
 .sidenav{
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 200px; /* Set the width of the sidebar */
@@ -94,8 +104,9 @@ button {
   color: #818181;
   display: block;
 }
+
 main{
-  margin-left: 200px; /* Same as the width of the sidenav */
+  margin-left: 250px; /* Same as the width of the sidenav */
   font-size: 28px; /* Increased text to enable scrolling */
   padding: 0px 10px;
 }
