@@ -1,6 +1,6 @@
 function CredentialCheck(input){
 
-    /*
+
     let result = {};
 
     if (input.username === "") {
@@ -19,7 +19,6 @@ function CredentialCheck(input){
 
     return result;
 
-     */
 }
 
 export default CredentialCheck;
