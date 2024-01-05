@@ -32,8 +32,8 @@ function Patients() {
             </form>
             <ul>
                 {patients.map(patient => (
-                    <li key={`${patient.patientBooking}-${patient.time}`}>
-                        {patient.patientBooking} - {patient.time}
+                    <li key={`${patient.forename}-${patient.surname}`}>
+                        {patient.forename} - {patient.surname}
                     </li>
                 ))}
             </ul>

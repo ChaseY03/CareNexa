@@ -33,8 +33,8 @@ function Billing() {
             </form>
             <ul>
                 {billings.map(billing => (
-                    <li key={`${billing.patientBooking}-${billing.time}`}>
-                        {billing.patientBooking} - {billing.time}
+                    <li key={`${billing.treatmentID}-${billing.cost}-${billing.payStatus}`}>
+                        {billing.treatmentID} - {billing.cost} - {billing.payStatus}
                     </li>
                 ))}
             </ul>
