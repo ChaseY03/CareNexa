@@ -35,20 +35,20 @@ function Login(){
     }
     return (
 
-                <div className={"App"}>
-                    <img src={"./CareNexaLogo.svg"} alt={"CareNexa logo"} className={"login-logo"}/>
-                    <form action="" onSubmit={checkCredential} className={"login-form"}>
-                        <div>
-                            <input type='textbox' placeholder='Username' name='employeeID'
-                                   onChange={takeInput} autoComplete='off' required/>
-                        </div>
-                        <div>
-                            <input type='password' placeholder='Password' name='lastName'
-                                   onChange={takeInput} required/>
-                        </div>
-                        <button type='submit'>Login</button>
-                    </form>
+        <div className="App">
+            <img src="./CareNexaLogo.svg" alt="CareNexa logo" className="login-logo" />
+            <form action="" onSubmit={checkCredential} className="login-form">
+                <div>
+                    <input type='textbox' placeholder='Username' name='employeeID' onChange={takeInput} autoComplete='off' required />
                 </div>
+                <div>
+                    <input type='password' placeholder='Password' name='lastName' onChange={takeInput} required />
+                </div>
+                <div>
+                    <button type='submit'>Login</button>
+                </div>
+            </form>
+        </div>
     )
 }
 

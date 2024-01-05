@@ -6,8 +6,11 @@ const Layout = () => {
     return (
         <div>>
             <div className={"sidenav"}>
+                <img src={"./CareNexaLogo.svg"} alt={"CareNexa logo"} className={"menu-logo"}
+                     width="50" height="50" />
                 <nav>
                     <ul>
+
                         <li>
                             <Link to="/Home">Home</Link>
                         </li>

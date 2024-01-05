@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 html, body {
   padding: 0;
   margin: 0;
+  font-family: 'Poppins';
 }
 
 .App {
@@ -10,7 +13,8 @@ html, body {
   align-items: center;
   justify-content: center;
   color: white;
-  background-image: linear-gradient(135deg, #FF0000, #800000);
+  background-image: linear-gradient(135deg, #101214, #bdc1c9);
+  flex-direction: column;
 }
 
 .App-logo {
@@ -52,11 +56,25 @@ html, body {
 .login-form{
   display: flex;
   flex-direction: column;
+  width: 25vw;
+  height: 25vh;
+  box-sizing: border-box;
 }
 
-.login-logo{
+.login-logo {
   display: flex;
-  flex-direction: column;
+  width: 25vw;
+  height: 25vw;
+  top: 0;
+  z-index: 1;
+}
+
+.menu-logo{
+  display: flex;
+  width: 200px;
+  height: 200px;
+  top: 0;
+  z-index: 1;
 }
 
 input {
@@ -64,6 +82,9 @@ input {
   padding: 1rem;
   border: none;
   border-radius: 2px;
+  width: 25vw;
+  height: 5vh;
+  box-sizing: border-box;
 }
 
 button {
@@ -82,19 +103,19 @@ button {
   left: 50px;
   padding: 10px;
   background-color: #f1f1f1;
-  z-index: 1000;
+  z-index: 2;
   text-align: center;
 }
 
 .sidenav{
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 200px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
   left: 0;
-  background-color: #111; /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
+  background-color: #111;
+  overflow-x: hidden;
   padding-top: 20px;
 }
 .sidenav li,a{
@@ -106,7 +127,7 @@ button {
 }
 
 main{
-  margin-left: 250px; /* Same as the width of the sidenav */
-  font-size: 28px; /* Increased text to enable scrolling */
+  margin-left: 250px;
+  font-size: 28px;
   padding: 0px 10px;
 }
