@@ -36,20 +36,31 @@ app.post('/Staff', (req, res)=>{
     const sql = "SELECT * FROM Staff WHERE `employeeID` = ? AND `lastName` = ?";
     pool.query(sql,[req.body.employeeID, req.body.lastName],(err, data) => {
         if (err){
-            pool.end();
             return res.json("Error");
         }
         if(data.length > 0){
-            pool.end();
             return res.json("Success");
         }
         else {
-            pool.end();
             return res.json("Fail");
         }
 
     })
 })
+/* auto load bookings
+app.get('/Booking', (req, res) => {
+    console.log("auto Finding booking info");
+    const sql = "SELECT * FROM `Booking`";
+    pool.query(sql, (err, data) => {
+        if (err) {
+            console.error("Error fetching bookings:", err);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+            console.log("Bookings fetched successfully");
+            res.status(200).json(data);
+        }
+    })
+    });*/
 
 app.post('/Booking', (req, res) => {
     console.log("Finding booking info");
@@ -64,6 +75,7 @@ app.post('/Booking', (req, res) => {
         }
     });
 })
+
 app.post('/Billing', (req, res) => {
     console.log("Finding billing info");
     const sql = "SELECT * FROM `Billing`";
@@ -103,7 +115,7 @@ app.listen(3006, () =>{
 conn.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
-});
+})
 
 
 /*

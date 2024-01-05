@@ -6,19 +6,18 @@ function Booking() {
 
     const [bookings, setBookings] = useState([]);
 
-    /*
-    useEffect( (e) => {
-        // Fetch appointments from your API
-        e.preventDefault();
-         axios.get('http://localhost:3006/Booking')
-            .then(response => {
-                setBookings(response.data);
-            })
-            .catch(error => {
-                console.error('Error fetching appointments:', error);
-            });
-    }, []);
-*/
+    /* auto show bookings
+        useEffect( () => {
+            // Fetch appointments from your API
+            axios.get('http://localhost:3006/Booking')
+                .then(response => {
+                    setBookings(response.data);
+                })
+                .catch(error => {
+                    console.error('Error fetching appointments:', error);
+                });
+        }, []);
+    */
 
     const findBooking = async (e) => {
         e.preventDefault();
@@ -48,6 +47,7 @@ function Booking() {
                     <li key={`${booking.patientBooking}-${booking.time}`}>
                         {booking.patientBooking} - {booking.time}
                     </li>
+
                 ))}
             </ul>
         </main>

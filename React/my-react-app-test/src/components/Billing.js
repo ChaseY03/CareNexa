@@ -6,9 +6,9 @@ function Billing() {
 
     const [billings, setBillings] = useState([]);
 
-    const findBooking = async (e) => {
+    const findBilling = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:3006/Billings')
+        await axios.post('http://localhost:3006/Billing')
             .then(response => {
                 setBillings(response.data);
                 console.log("loading data")
@@ -28,8 +28,8 @@ function Billing() {
 
         <main>
             <h1>BILLING</h1>
-            <form onSubmit={findBooking}>
-                <button type='submit' >Find booking</button>
+            <form onSubmit={findBilling}>
+                <button type='submit' >Find billings</button>
             </form>
             <ul>
                 {billings.map(billing => (
