@@ -30,47 +30,21 @@ const pool = mysql.createPool({
     port: '3306',
 });
 
-/*
-pool.getConnection((err, connection) => {
-    if (err) {
-        console.error('Error connecting to MySQL:', err);
-    } else {
-        console.log('Connected to MySQL!');
-        connection.release();
-    }
-});*/
-
-
-/*
-try {
-    const connection = await pool.getConnection();
-    const results = await connection.query('SELECT * FROM Staff');
-    connection.release();
-    res.status(200).json(results);
-    console.log('Response sent successfully');
-} catch (error) {
-    console.error('Error executing MySQL query:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-}*/
-
 
 app.post('/Staff', (req, res)=>{
     console.log("Finding login info")
     const sql = "SELECT * FROM Staff WHERE `employeeID` = ? AND `lastName` = ?";
     pool.query(sql,[req.body.employeeID, req.body.lastName],(err, data) => {
         if (err){
-           // pool.end();
-            //console.log("conn closed");
+            pool.end();
             return res.json("Error");
         }
         if(data.length > 0){
-            //pool.end();
-           // console.log("conn closed");
+            pool.end();
             return res.json("Success");
         }
         else {
-            //pool.end();
-            //console.log("conn closed");
+            pool.end();
             return res.json("Fail");
         }
 
@@ -86,6 +60,33 @@ app.post('/Booking', (req, res) => {
             res.status(500).json({ error: 'Internal Server Error' });
         } else {
             console.log("Bookings fetched successfully");
+            res.status(200).json(data);
+        }
+    });
+})
+app.post('/Billing', (req, res) => {
+    console.log("Finding billing info");
+    const sql = "SELECT * FROM `Billing`";
+    pool.query(sql, (err, data) => {
+        if (err) {
+            console.error("Error fetching bookings:", err);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+            console.log("Billing fetched successfully");
+            res.status(200).json(data);
+        }
+    });
+})
+
+app.post('/Patient', (req, res) => {
+    console.log("Finding patient info");
+    const sql = "SELECT * FROM `Patient`";
+    pool.query(sql, (err, data) => {
+        if (err) {
+            console.error("Error fetching bookings:", err);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+            console.log("Patients fetched successfully");
             res.status(200).json(data);
         }
     });

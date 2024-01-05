@@ -48,14 +48,11 @@ function Booking() {
                     <li key={`${booking.patientBooking}-${booking.time}`}>
                         {booking.patientBooking} - {booking.time}
                     </li>
-
                 ))}
             </ul>
         </main>
-    </>)
-
-
-
+    </>
+    )
 };
 
 export default Booking
