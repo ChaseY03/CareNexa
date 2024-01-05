@@ -47,6 +47,26 @@ app.post('/Staff', (req, res)=>{
 
     })
 })
+
+app.post('/Patient', (req, res)=>{
+    console.log("Finding patient ID's")
+    const sql = "SELECT * FROM Patient WHERE `patientID` = ?";
+    pool.query(sql, (err, data) => {
+        if (err){
+            res.status(500).json({ error: 'Internal Server Error' });
+            return res.json("Error");
+        }
+        if(data.length > 0){
+            console.log("Patients fetched successfully");
+            res.status(200).json(data);
+            return res.json("Success");
+        }
+        else {
+            return res.json("Fail");
+        }
+    });
+})
+
 /* auto load bookings
 app.get('/Booking', (req, res) => {
     console.log("auto Finding booking info");
