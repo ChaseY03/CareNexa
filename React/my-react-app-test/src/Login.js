@@ -22,7 +22,7 @@ function Login(){
             .then(res => {
                 if (res.data === "Success"){
                     navigate('Home');
-                    alert("Logged in"); //DEV CODE REMOVE LATER
+                   // alert("Logged in"); //DEV CODE REMOVE LATER
                 }else {
                     alert("No login found");
                 }

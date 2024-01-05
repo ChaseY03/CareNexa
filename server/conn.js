@@ -7,9 +7,11 @@ app.use(cors);
 const mysql = require('mysql');
 const express = require("express");
 const cors = require("cors");
+const Console = require("console");
 
 const app = express();
 app.use(cors());
+app.options('*', cors());
 app.use(express.json());
 
 const conn = mysql.createConnection({
@@ -25,47 +27,70 @@ const pool = mysql.createPool({
     password: 'carenexa2024',
     database: 'carenexa',
     host: '35.224.98.153',
+    port: '3306',
 });
 
-
-app.get('/carenexa/Staff', async (req, res) => {
-    console.log('Request received for /Staff');
-    const sql = "SELECT * FROM `Staff`";
-    conn.query(sql, (err, data) => {
-        console.log(data);
-        //return res.json(data);
-    })
-    });
-
-    /*
-    try {
-        const connection = await pool.getConnection();
-        const results = await connection.query('SELECT * FROM Staff');
+/*
+pool.getConnection((err, connection) => {
+    if (err) {
+        console.error('Error connecting to MySQL:', err);
+    } else {
+        console.log('Connected to MySQL!');
         connection.release();
-        res.status(200).json(results);
-        console.log('Response sent successfully');
-    } catch (error) {
-        console.error('Error executing MySQL query:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }*/
+    }
+});*/
+
+
+/*
+try {
+    const connection = await pool.getConnection();
+    const results = await connection.query('SELECT * FROM Staff');
+    connection.release();
+    res.status(200).json(results);
+    console.log('Response sent successfully');
+} catch (error) {
+    console.error('Error executing MySQL query:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+}*/
 
 
 app.post('/Staff', (req, res)=>{
     console.log("Finding login info")
     const sql = "SELECT * FROM Staff WHERE `employeeID` = ? AND `lastName` = ?";
-    conn.query(sql,[req.body.employeeID, req.body.lastName],(err, data) => {
+    pool.query(sql,[req.body.employeeID, req.body.lastName],(err, data) => {
         if (err){
+           // pool.end();
+            //console.log("conn closed");
             return res.json("Error");
         }
         if(data.length > 0){
+            //pool.end();
+           // console.log("conn closed");
             return res.json("Success");
         }
         else {
+            //pool.end();
+            //console.log("conn closed");
             return res.json("Fail");
         }
 
     })
 })
+
+app.post('/Booking', (req, res) => {
+    console.log("Finding booking info");
+    const sql = "SELECT * FROM `Booking`";
+    pool.query(sql, (err, data) => {
+        if (err) {
+            console.error("Error fetching bookings:", err);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+            console.log("Bookings fetched successfully");
+            res.status(200).json(data);
+        }
+    });
+})
+
 
 
 app.set('port'|| 3006);
