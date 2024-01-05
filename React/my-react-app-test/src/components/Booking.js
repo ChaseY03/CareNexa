@@ -1,12 +1,12 @@
 import Layout from "./Layout";
 
-function Settings() {
+function Booking() {
     return (<>
         <Layout/>
         <main>
-            <h1>SETTINGS</h1>
+            <h1>BOOKING</h1>
         </main>
     </>)
 };
 
-export default Settings
+export default Booking

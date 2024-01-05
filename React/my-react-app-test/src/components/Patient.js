@@ -1,12 +1,12 @@
 import Layout from "./Layout";
 
-function Settings() {
+function Patients() {
     return (<>
         <Layout/>
         <main>
-            <h1>SETTINGS</h1>
+            <h1>PATIENTS</h1>
         </main>
     </>)
 };
 
-export default Settings
+export default Patients
