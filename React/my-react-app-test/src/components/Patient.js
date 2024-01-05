@@ -6,7 +6,7 @@ import axios from "axios";
 function Patients() {
 
     const [input, setInput] = useState({
-        patientID : ''
+        forename : ''
     })
 
     const [patients, setPatients] = useState([]);
@@ -43,14 +43,23 @@ function Patients() {
         <main>
             <h1>PATIENTS</h1>
 
-            <form action="" onSubmit={findPatientID} className="login-form">
+            <form action="" onSubmit={findPatientID} className="patientID-form">
                 <div>
-                    <input type='textbox' placeholder='Patient ID' name='patientID' onChange={takeInput} autoComplete='off' required />
+                    <input type='textbox' placeholder='forename' name='forename' onChange={takeInput} autoComplete='off' required />
                 </div>
                 <div>
                     <button type='Search'>Search</button>
                 </div>
             </form>
+
+            <ul>
+                {patients.map(Patient => (
+                    <li key={`${Patient.forename}`}>
+                        {Patient.forename}
+                    </li>
+
+                ))}
+            </ul>
 
         </main>
     </>)

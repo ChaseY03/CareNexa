@@ -49,9 +49,10 @@ app.post('/Staff', (req, res)=>{
 })
 
 app.post('/Patient', (req, res)=>{
-    console.log("Finding patient ID's")
-    const sql = "SELECT * FROM Patient WHERE `patientID` = ?";
-    pool.query(sql, (err, data) => {
+    console.log("Finding patient forenames")
+    const sql = "SELECT * FROM Patient WHERE `forename` = ?";
+    const values = [req.body.forename];
+    pool.query(sql,[values], (err, data) => {
         if (err){
             res.status(500).json({ error: 'Internal Server Error' });
             return res.json("Error");
