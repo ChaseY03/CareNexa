@@ -48,12 +48,12 @@ app.post('/Staff', (req, res)=>{
     })
 })
 
-app.post('/FindPatient', (req, res) => {
-    console.log("Finding patient forenames");
-    const sql = "SELECT * FROM `Patient` WHERE `forename` = ?";
-    const values = [req.body.forename];
+const findPatientBy = (field, value, res) => {
+    console.log(`Finding patient by ${field}`);
+    const sql = `SELECT * FROM \`Patient\` WHERE \`${field}\` = ?`;
+    const queryValue = [value];
 
-    pool.query(sql, values, (err, data) => {
+    pool.query(sql, queryValue, (err, data) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ error: 'Internal Server Error' });
@@ -61,12 +61,29 @@ app.post('/FindPatient', (req, res) => {
 
         if (data.length > 0) {
             console.log("Patients fetched successfully");
-            return res.status(200).json(data); // Send patient data
+            return res.status(200).json(data);
         } else {
             return res.status(404).json({ message: "Patient not found" });
         }
     });
+};
+
+app.post('/FindPatient', (req, res) => {
+    findPatientBy('patientID', req.body.patientID, res);
 });
+
+app.post('/FindPatientFore', (req, res) => {
+    findPatientBy('forename', req.body.forename, res);
+});
+
+app.post('/FindPatientSur', (req, res) => {
+    findPatientBy('surname', req.body.surname, res);
+});
+
+app.post('/FindPatientDOB', (req, res) => {
+    findPatientBy('dateOfBirth', req.body.dateOfBirth, res);
+});
+
 
 
 /* auto load bookings

@@ -4,6 +4,7 @@ html, body {
   padding: 0;
   margin: 0;
   font-family: 'Poppins';
+  background-color: #818181;
 }
 
 .App {
@@ -107,6 +108,15 @@ button {
   text-align: center;
 }
 
+.search-button {
+  padding: 10px;
+  background-color: #de5050;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  fontstyle: bold;
+}
+
 .sidenav{
   height: 100%;
   width: 200px;
@@ -130,4 +140,7 @@ main{
   margin-left: 250px;
   font-size: 28px;
   padding: 0px 10px;
+}
+ul {
+  list-style-type: none;
 }
