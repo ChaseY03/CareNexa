@@ -51,16 +51,18 @@ function Patients() {
             <form action="" onSubmit={findPatientID} className="patientID-form">
                 <div>
                     <input type='textbox' placeholder='forename' name='forename' onChange={takeInput} autoComplete='off' required />
+                    <button type='Search'>Search</button>
                 </div>
                 <div>
-                    <button type='Search'>Search</button>
+
                 </div>
             </form>
 
             <ul>
                 {patients.map(Patient => (
-                    <li key={`${Patient.forename}`}>
-                        {Patient.forename}
+                    <li key={`${Patient.patientID}-${Patient.forename}-${Patient.surname}-${Patient.dateOfBirth}-
+                    ${Patient.gender}-${Patient.countryCode}-${Patient.phoneNumber}`}>
+                        {Patient.patientID} - {Patient.forename} - {Patient.surname} - {Patient.dateOfBirth} - {Patient.gender} - {Patient.countryCode} {Patient.phoneNumber}
                     </li>
 
                 ))}
