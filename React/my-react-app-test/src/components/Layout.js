@@ -26,13 +26,14 @@ const Layout = () => {
                         <li>
                             <Link to="/Settings">Settings</Link>
                         </li>
+                        <li>
+                            <Link to="/">Logout</Link>
+                        </li>
                     </ul>
                 </nav>
             </div>
 
-            <div className={"bottom-logout"}>
-                <Link to="/">Logout</Link>
-            </div>
+            
 
         </div>
 
