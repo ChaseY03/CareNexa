@@ -215,6 +215,7 @@ function Billing() {
                 {Array.isArray(bills) && bills.length > 0 ? (
                     bills.map((Billing) => (
                         <tr key={Billing.treatmentID}>
+                            <td>{Billing.treatmentID}</td>
                             <td>{Billing.cost}</td>
                             <td>{Billing.payStatus}</td>
                             <td>{Billing.treatmentType}</td>
