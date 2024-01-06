@@ -125,7 +125,7 @@ function Patients() {
             });
     }
     /*
-     * The <ul> in return() acts as a list displaying results from the search queries,
+     * The <table> section in return() is a table displaying results from the search queries,
      * if data is found matching what is wanted then it will display all details of patient(s),
      * if nothing matches the case, then it will follow the 2nd conditional check and display 'no patients found'
      *
@@ -173,20 +173,39 @@ function Patients() {
                     <button type='Search' className={"search-button"}>Search</button>
                 </div>
             </form>
-
-            <ul>
+            
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Forename</th>
+                    <th>Surname</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Country Code</th>
+                    <th>Phone Number</th>
+                </tr>
+                </thead>
+                <tbody>
                 {Array.isArray(patients) && patients.length > 0 ? (
                     patients.map((Patient) => (
-                        <li
-                            key={`${Patient.patientID}-${Patient.forename}-${Patient.surname}-${Patient.dateOfBirth}-${Patient.gender}-${Patient.countryCode}-${Patient.phoneNumber}`}
-                        >
-                            {Patient.patientID} - {Patient.forename} - {Patient.surname} - {Patient.dateOfBirth} - {Patient.gender} - {Patient.countryCode} {Patient.phoneNumber}
-                        </li>
+                        <tr key={Patient.patientID}>
+                            <td>{Patient.patientID}</td>
+                            <td>{Patient.forename}</td>
+                            <td>{Patient.surname}</td>
+                            <td>{Patient.dateOfBirth}</td>
+                            <td>{Patient.gender}</td>
+                            <td>{Patient.countryCode}</td>
+                            <td>{Patient.phoneNumber}</td>
+                        </tr>
                     ))
                 ) : (
-                    <li>No patients found</li>
+                    <tr>
+                        <td colSpan="7">No patients found</td>
+                    </tr>
                 )}
-            </ul>
+                </tbody>
+            </table>
 
         </main>
     </>)
