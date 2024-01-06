@@ -223,7 +223,7 @@ function Booking() {
                         ))
                     ) : (
                         <tr>
-                            <td colSpan="5">No bookings found</td>
+                            <td colSpan="6">No bookings found</td>
                         </tr>
                     )}
                     </tbody>

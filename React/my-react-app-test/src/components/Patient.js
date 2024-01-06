@@ -182,7 +182,7 @@ function Patients() {
                     <th>Surname</th>
                     <th>Date of Birth</th>
                     <th>Gender</th>
-                    <th>Country Code</th>
+                    <th>Dial Code</th>
                     <th>Phone Number</th>
                 </tr>
                 </thead>
@@ -201,7 +201,7 @@ function Patients() {
                     ))
                 ) : (
                     <tr>
-                        <td colSpan="7">No patients found</td>
+                        <td colSpan="8">No patients found</td>
                     </tr>
                 )}
                 </tbody>
