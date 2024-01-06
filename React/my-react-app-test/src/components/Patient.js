@@ -36,7 +36,6 @@ function Patients() {
                     }
                     else {
                         setPatients([]);
-                        alert("No patients found");
                         console.log(res.data)
                     }
                 })
@@ -59,7 +58,6 @@ function Patients() {
                     }
                     else {
                         setPatients([]);
-                        alert("No patients found");
                         console.log(res.data)
                     }
                 })
@@ -82,7 +80,6 @@ function Patients() {
                     }
                     else {
                         setPatients([]);
-                        alert("No patients found");
                         console.log(res.data)
                     }
                 })
@@ -105,7 +102,6 @@ function Patients() {
                     }
                     else {
                         setPatients([]);
-                        alert("No patients found");
                         console.log(res.data)
                     }
                 })
@@ -150,28 +146,28 @@ function Patients() {
                 <button type='submit' className={"search-button"}>Find all</button>
             </form>
 
-            <form action="" onSubmit={findPatientID} className="patientID-form">
+            <form action="" onSubmit={findPatientID}>
                 <div>
                     <input type='textbox' placeholder='patientID' name='patientID' onChange={takeInput} autoComplete='off' required />
                     <button type='Search' className={"search-button"}>Search</button>
                 </div>
             </form>
 
-            <form action="" onSubmit={findPatientFore} className="patientfore-form">
+            <form action="" onSubmit={findPatientFore}>
                 <div>
                     <input type='textbox' placeholder='forename' name='forename' onChange={takeInput} autoComplete='off' required />
                     <button type='Search' className={"search-button"}>Search</button>
                 </div>
             </form>
 
-            <form action="" onSubmit={findPatientSur} className="patientSur-form">
+            <form action="" onSubmit={findPatientSur}>
                 <div>
                     <input type='textbox' placeholder='surname' name='surname' onChange={takeInput} autoComplete='off' required />
                     <button type='Search' className={"search-button"}>Search</button>
                 </div>
             </form>
 
-            <form action="" onSubmit={findPatientDOB} className="patientDOB-form">
+            <form action="" onSubmit={findPatientDOB}>
                 <div>
                     <input type='textbox' placeholder='date of birth (yyyymmdd)' name='DOB' onChange={takeInput} autoComplete='off' required />
                     <button type='Search' className={"search-button"}>Search</button>

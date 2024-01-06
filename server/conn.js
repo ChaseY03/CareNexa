@@ -1,13 +1,6 @@
-/*const express = require("express");
-const cors = require("cors");
-const app = express();
-app.use(cors);
-*/
-
 const mysql = require('mysql');
 const express = require("express");
 const cors = require("cors");
-const Console = require("console");
 
 const app = express();
 app.use(cors());
@@ -30,7 +23,7 @@ const pool = mysql.createPool({
     port: '3306',
 });
 
-
+//LOGIN SQL
 app.post('/Staff', (req, res)=>{
     console.log("Finding login info")
     const sql = "SELECT * FROM Staff WHERE `employeeID` = ? AND `lastName` = ?";
@@ -48,6 +41,59 @@ app.post('/Staff', (req, res)=>{
     })
 })
 
+//BOOKING SQL
+const findBookingBy = (field, value, res) => {
+    console.log(`Finding booking by ${field}`);
+    const sql = `SELECT * FROM \`Booking\` WHERE \`${field}\` = ?`;
+    const queryValue = [value];
+
+    pool.query(sql, queryValue, (err, data) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+        if (data.length > 0) {
+            console.log("Bookings fetched successfully");
+            return res.status(200).json({ status: "Found", data });
+        }
+        else {
+            const message = `No bookings found with ${field}=${value}`;
+            return res.json({status: "Not found", message});
+
+        }
+    });
+};
+app.post('/FindpatientBooking', (req, res) => {
+    findBookingBy('patientBooking', req.body.patientBooking, res);
+});
+app.post('/FindStaffemployeeID', (req, res) => {
+    findBookingBy('StaffemployeeID', req.body.StaffemployeeID, res);
+});
+app.post('/FindTime', (req, res) => {
+    findBookingBy('time', req.body.time, res);
+});
+app.post('/FindLocation', (req, res) => {
+    findBookingBy('location', req.body.location, res);
+});
+app.post('/FindBookingID', (req, res) => {
+    findBookingBy('bookingID', req.body.bookingID, res);
+});
+
+app.post('/FindAllBookings', (req, res) => {
+    console.log("Finding Booking info");
+    const sql = "SELECT * FROM `Booking`";
+    pool.query(sql, (err, data) => {
+        if (err) {
+            console.error("Error fetching bookings:", err);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+            console.log("Patients fetched successfully");
+            res.status(200).json(data);
+        }
+    });
+})
+
+//PATIENT SQL
 const findPatientBy = (field, value, res) => {
     console.log(`Finding patient by ${field}`);
     const sql = `SELECT * FROM \`Patient\` WHERE \`${field}\` = ?`;
@@ -69,55 +115,34 @@ const findPatientBy = (field, value, res) => {
         }
     });
 };
-
-
 app.post('/FindPatient', (req, res) => {
     findPatientBy('patientID', req.body.patientID, res);
 });
-
 app.post('/FindPatientFore', (req, res) => {
     findPatientBy('forename', req.body.forename, res);
 });
-
 app.post('/FindPatientSur', (req, res) => {
     findPatientBy('surname', req.body.surname, res);
 });
-
 app.post('/FindPatientDOB', (req, res) => {
     findPatientBy('dateOfBirth', req.body.dateOfBirth, res);
 });
 
-
-
-/* auto load bookings
-app.get('/Booking', (req, res) => {
-    console.log("auto Finding booking info");
-    const sql = "SELECT * FROM `Booking`";
+app.post('/FindAllPatient', (req, res) => {
+    console.log("Finding patient info");
+    const sql = "SELECT * FROM `Patient`";
     pool.query(sql, (err, data) => {
         if (err) {
-            console.error("Error fetching bookings:", err);
+            console.error("Error fetching patients:", err);
             res.status(500).json({ error: 'Internal Server Error' });
         } else {
-            console.log("Bookings fetched successfully");
-            res.status(200).json(data);
-        }
-    })
-    });*/
-
-app.post('/Booking', (req, res) => {
-    console.log("Finding booking info");
-    const sql = "SELECT * FROM `Booking`";
-    pool.query(sql, (err, data) => {
-        if (err) {
-            console.error("Error fetching bookings:", err);
-            res.status(500).json({ error: 'Internal Server Error' });
-        } else {
-            console.log("Bookings fetched successfully");
+            console.log("Patients fetched successfully");
             res.status(200).json(data);
         }
     });
 })
 
+//BILLING SQL
 app.post('/Billing', (req, res) => {
     console.log("Finding billing info");
     const sql = "SELECT * FROM `Billing`";
@@ -132,28 +157,13 @@ app.post('/Billing', (req, res) => {
     });
 })
 
-app.post('/FindAllPatient', (req, res) => {
-    console.log("Finding patient info");
-    const sql = "SELECT * FROM `Patient`";
-    pool.query(sql, (err, data) => {
-        if (err) {
-            console.error("Error fetching bookings:", err);
-            res.status(500).json({ error: 'Internal Server Error' });
-        } else {
-            console.log("Patients fetched successfully");
-            res.status(200).json(data);
-        }
-    });
-})
-
-
-
+//Server Listening Log
 app.set('port'|| 3006);
 app.listen(3006, () =>{
     console.log("Listening");
-
 })
 
+//Server Connected Log
 conn.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
