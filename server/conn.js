@@ -63,10 +63,24 @@ const findPatientBy = (field, value, res) => {
             console.log("Patients fetched successfully");
             return res.status(200).json(data);
         } else {
-            return res.status(404).json({ message: "Patient not found" });
+            const message = `No patient found with ${field}=${value}`;
+            return res.status(404).json({ message });
+        }
+
+
+
+        if (err){
+            return res.json("Error");
+        }
+        if(data.length > 0){
+            return res.status(200).json(data,"success");
+        }
+        else {
+            return res.json("Fail");
         }
     });
 };
+
 
 app.post('/FindPatient', (req, res) => {
     findPatientBy('patientID', req.body.patientID, res);
@@ -129,7 +143,7 @@ app.post('/Billing', (req, res) => {
     });
 })
 
-app.post('/Patient', (req, res) => {
+app.post('/FindAllPatient', (req, res) => {
     console.log("Finding patient info");
     const sql = "SELECT * FROM `Patient`";
     pool.query(sql, (err, data) => {
