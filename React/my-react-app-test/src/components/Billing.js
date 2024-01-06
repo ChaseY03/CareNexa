@@ -195,7 +195,7 @@ function Billing() {
 
             <form action="" onSubmit={findpatientBilling}>
                 <div>
-                    <input type='textbox' placeholder='patient number' name='patientBilling' onChange={takeInput} autoComplete='off' required />
+                    <input type='textbox' placeholder='patient ref#' name='patientBilling' onChange={takeInput} autoComplete='off' required />
                     <button type='Search' className={"search-button"}>Search</button>
                 </div>
             </form>

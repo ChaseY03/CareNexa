@@ -148,7 +148,7 @@ function Patients() {
 
             <form action="" onSubmit={findPatientID}>
                 <div>
-                    <input type='textbox' placeholder='patientID' name='patientID' onChange={takeInput} autoComplete='off' required />
+                    <input type='textbox' placeholder='patient ID#' name='patientID' onChange={takeInput} autoComplete='off' required />
                     <button type='Search' className={"search-button"}>Search</button>
                 </div>
             </form>

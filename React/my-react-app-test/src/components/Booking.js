@@ -167,7 +167,7 @@ function Booking() {
 
                 <form action="" onSubmit={findBookingID}>
                     <div>
-                        <input type='textbox' placeholder='bookingID' name='bookingID' onChange={takeInput} autoComplete='off' required />
+                        <input type='textbox' placeholder='booking ID#' name='bookingID' onChange={takeInput} autoComplete='off' required />
                         <button type='Search' className={"search-button"}>Search</button>
                     </div>
                 </form>
