@@ -26,15 +26,21 @@ const Layout = () => {
                         <li>
                             <Link to="/Settings">Settings</Link>
                         </li>
+
+                    </ul>
+                </nav>
+
+                <li className={"logout"}>
+                </li>
+
+                <nav>
+                    <ul>
                         <li>
                             <Link to="/">Logout</Link>
                         </li>
                     </ul>
                 </nav>
             </div>
-
-
-
         </div>
 
 

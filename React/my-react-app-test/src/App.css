@@ -136,6 +136,10 @@ button {
   display: block;
 }
 
+.logout {
+  border-top: #818181 3px solid;
+}
+
 main{
   margin-left: 250px;
   font-size: 28px;
