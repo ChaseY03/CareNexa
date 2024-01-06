@@ -31,7 +31,6 @@ function Patients() {
             await axios.post('http://localhost:3006/FindPatient', patientID)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        //alert("Found");
                         setPatients(res.data.data);  // Set the state here
                         console.log(res.data);
                     }
@@ -52,62 +51,69 @@ function Patients() {
     const findPatientFore = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3006/FindPatientFore', forename);
-
-            if (response.data.length > 0) {
-                // Assuming data is an array of patients
-                setPatients(response.data);
-                console.log("Patients found:", response.data);
-            }
-            else {
-                alert("No matching data");
-                console.log("No matching data");
-            }
-            console.log("Loading data");
+            await axios.post('http://localhost:3006/FindPatientFore', forename)
+                .then(res => {
+                    if (res.data && res.data.status === "Found") {
+                        setPatients(res.data.data);
+                        console.log(res.data);
+                    }
+                    else {
+                        setPatients([]);
+                        alert("No patients found");
+                        console.log(res.data)
+                    }
+                })
+                .catch(err => console.log(err))
         }
         catch (error) {
             console.error('Error fetching patients:', error);
+
         }
-    };
+    }
 
     const findPatientSur = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3006/FindPatientSur', surname);
-            if (response.data.length > 0) {
-                // Assuming data is an array of patients
-                setPatients(response.data);
-                console.log("Patients found:", response.data);
-            }
-            else {
-                alert("No matching data");
-                console.log("No matching data");
-            }
-
-            console.log("Loading data");
-        } catch (error) {
+            await axios.post('http://localhost:3006/FindPatientSur', surname)
+                .then(res => {
+                    if (res.data && res.data.status === "Found") {
+                        setPatients(res.data.data);
+                        console.log(res.data);
+                    }
+                    else {
+                        setPatients([]);
+                        alert("No patients found");
+                        console.log(res.data)
+                    }
+                })
+                .catch(err => console.log(err))
+        }
+        catch (error) {
             console.error('Error fetching patients:', error);
+
         }
     };
 
     const findPatientDOB = async (e) => {
         e.preventDefault();
-
         try {
-            const response = await axios.post('http://localhost:3006/FindPatientDOB', DOB);
-
-            if (response.data.length > 0) {
-                // Assuming data is an array of patients
-                setPatients(response.data);
-                console.log("Patients found:", response.data);
-            } else {
-                alert("No matching data");
-                console.log("No matching data");
-            }
-
-            console.log("Loading data");
-        } catch (error) {
+            await axios.post('http://localhost:3006/FindPatientDOB', DOB)
+                .then(res => {
+                    if (res.data && res.data.status === "Found") {
+                        setPatients(res.data.data);
+                        console.log(res.data);
+                    }
+                    else {
+                        setPatients([]);
+                        alert("No patients found");
+                        console.log(res.data)
+                    }
+                })
+                .catch(err => console.log(err))
+        }
+        catch (error) {
             console.error('Error fetching patients:', error);
+
         }
     };
 
@@ -122,7 +128,12 @@ function Patients() {
                 console.error('Error fetching appointments:', error);
             });
     }
-
+    /*
+     * The <ul> in return() acts as a list displaying results from the search queries,
+     * if data is found matching what is wanted then it will display all details of patient(s),
+     * if nothing matches the case, then it will follow the 2nd conditional check and display 'no patients found'
+     *
+     */
 
     return (<>
 
@@ -136,7 +147,7 @@ function Patients() {
             <h1>PATIENTS</h1>
 
             <form onSubmit={findAllPatients}>
-                <button type='submit' >Find all</button>
+                <button type='submit' className={"search-button"}>Find all</button>
             </form>
 
             <form action="" onSubmit={findPatientID} className="patientID-form">
