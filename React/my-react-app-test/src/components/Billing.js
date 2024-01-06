@@ -200,19 +200,34 @@ function Billing() {
                 </div>
             </form>
 
-            <ul>
+            <table>
+                <thead>
+                <tr>
+                    <th>Treatment ID</th>
+                    <th>Cost</th>
+                    <th>Pay Status</th>
+                    <th>Treatment Type</th>
+                    <th>Patient #</th>
+
+                </tr>
+                </thead>
+                <tbody>
                 {Array.isArray(bills) && bills.length > 0 ? (
                     bills.map((Billing) => (
-                        <li
-                            key={`${Billing.treatmentID}-${Billing.cost}-${Billing.payStatus}-${Billing.treatmentType}-${Billing.patientBilling}`}
-                        >
-                            {Billing.treatmentID} - {Billing.cost} - {Billing.payStatus} - {Billing.treatmentType} - {Billing.patientBilling}
-                        </li>
+                        <tr key={Billing.treatmentID}>
+                            <td>{Billing.cost}</td>
+                            <td>{Billing.payStatus}</td>
+                            <td>{Billing.treatmentType}</td>
+                            <td>{Billing.patientBilling}</td>
+                        </tr>
                     ))
                 ) : (
-                    <li>No Bills found</li>
+                    <tr>
+                        <td colSpan="5">No Bills found</td>
+                    </tr>
                 )}
-            </ul>
+                </tbody>
+            </table>
 
         </main>
     </>)
