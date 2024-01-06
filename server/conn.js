@@ -207,6 +207,21 @@ conn.connect(function(err) {
 })
 
 
+
+app.post('/CreateBillingEntry', async (req, res) => {
+    try {
+        // Insert the new billing entry into the database using the pool
+        const result = await pool.query('INSERT INTO Billing SET ?', req.body);
+
+        // Respond with the created billing entry
+        res.status(201).json(result);
+    }
+    catch (error) {
+        console.error('Error creating billing entry:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 /*
 const mysql = require('promise-mysql');
 const fs = require('fs');
