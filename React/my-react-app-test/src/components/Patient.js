@@ -27,40 +27,26 @@ function Patients() {
 
     const findPatientID = async (e) => {
         e.preventDefault();
-
         try {
-            const response = await axios.post('http://localhost:3006/FindPatient', patientID)
+            await axios.post('http://localhost:3006/FindPatient', patientID)
                 .then(res => {
-                    if (res.data === "Success"){
-                        setPatients(response.data);
-                        // alert("Logged in"); //DEV CODE REMOVE LATER
-                    }else {
+                    if (res.data && res.data.status === "Found") {
+                        //alert("Found");
+                        setPatients(res.data.data);  // Set the state here
+                        console.log(res.data);
+                    }
+                    else {
+                        setPatients([]);
                         alert("No patients found");
+                        console.log(res.data)
                     }
                 })
                 .catch(err => console.log(err))
-
-
-            /*
-            if (response.data.length > 0) {
-                // Assuming data is an array of patients
-                setPatients(response.data);
-                console.log("Patients found:", response.data);
-            }
-            else {
-                alert("No matching data");
-                console.log("No matching data");
-            }
-            console.log("Loading data");
-
-             */
         }
-
         catch (error) {
             console.error('Error fetching patients:', error);
+
         }
-
-
     };
 
     const findPatientFore = async (e) => {
@@ -92,9 +78,6 @@ function Patients() {
                 // Assuming data is an array of patients
                 setPatients(response.data);
                 console.log("Patients found:", response.data);
-            }
-            else if(response==="none"){
-
             }
             else {
                 alert("No matching data");
@@ -185,13 +168,17 @@ function Patients() {
             </form>
 
             <ul>
-                {patients.map(Patient => (
-                    <li key={`${Patient.patientID}-${Patient.forename}-${Patient.surname}-${Patient.dateOfBirth}-
-                    ${Patient.gender}-${Patient.countryCode}-${Patient.phoneNumber}`}>
-                        {Patient.patientID} - {Patient.forename} - {Patient.surname} - {Patient.dateOfBirth} - {Patient.gender} - {Patient.countryCode} {Patient.phoneNumber}
-                    </li>
-
-                ))}
+                {Array.isArray(patients) && patients.length > 0 ? (
+                    patients.map((Patient) => (
+                        <li
+                            key={`${Patient.patientID}-${Patient.forename}-${Patient.surname}-${Patient.dateOfBirth}-${Patient.gender}-${Patient.countryCode}-${Patient.phoneNumber}`}
+                        >
+                            {Patient.patientID} - {Patient.forename} - {Patient.surname} - {Patient.dateOfBirth} - {Patient.gender} - {Patient.countryCode} {Patient.phoneNumber}
+                        </li>
+                    ))
+                ) : (
+                    <li>No patients found</li>
+                )}
             </ul>
 
         </main>

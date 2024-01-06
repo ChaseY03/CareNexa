@@ -58,25 +58,14 @@ const findPatientBy = (field, value, res) => {
             console.error('Database error:', err);
             return res.status(500).json({ error: 'Internal Server Error' });
         }
-
         if (data.length > 0) {
             console.log("Patients fetched successfully");
-            return res.status(200).json(data);
-        } else {
-            const message = `No patient found with ${field}=${value}`;
-            return res.status(404).json({ message });
-        }
-
-
-
-        if (err){
-            return res.json("Error");
-        }
-        if(data.length > 0){
-            return res.status(200).json(data,"success");
+            return res.status(200).json({ status: "Found", data });
         }
         else {
-            return res.json("Fail");
+            const message = `No patient found with ${field}=${value}`;
+            return res.json({status: "Not found", message});
+
         }
     });
 };
