@@ -140,6 +140,19 @@ button {
   border-top: #818181 3px solid;
 }
 
+table {
+  border-collapse: collapse;
+  table-layout: auto; /* Allow columns to adjust based on content */
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 main{
   margin-left: 250px;
   font-size: 28px;

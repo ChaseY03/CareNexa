@@ -139,7 +139,7 @@ function Patients() {
             <title>CareNexa Patients</title>
         </head>
 
-        <main>
+        <main style={{ width: '100%', minHeight: '100vh' }}>
             <h1>PATIENTS</h1>
 
             <form onSubmit={findAllPatients}>

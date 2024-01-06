@@ -80,7 +80,7 @@ app.post('/FindBookingID', (req, res) => {
 });
 
 app.post('/FindAllBookings', (req, res) => {
-    console.log("Finding Booking info");
+    console.log("Finding booking info");
     const sql = "SELECT * FROM `Booking`";
     pool.query(sql, (err, data) => {
         if (err) {
@@ -143,15 +143,52 @@ app.post('/FindAllPatient', (req, res) => {
 })
 
 //BILLING SQL
-app.post('/Billing', (req, res) => {
+const findBillingsBy = (field, value, res) => {
+    console.log(`Finding billings by ${field}`);
+    const sql = `SELECT * FROM \`Billing\` WHERE \`${field}\` = ?`;
+    const queryValue = [value];
+
+    pool.query(sql, queryValue, (err, data) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+        if (data.length > 0) {
+            console.log("Bookings fetched successfully");
+            return res.status(200).json({ status: "Found", data });
+        }
+        else {
+            const message = `No bookings found with ${field}=${value}`;
+            return res.json({status: "Not found", message});
+
+        }
+    });
+};
+app.post('/FindtreatmentID', (req, res) => {
+    findBillingsBy('treatmentID', req.body.treatmentID, res);
+});
+app.post('/Findcost', (req, res) => {
+    findBillingsBy('cost', req.body.cost, res);
+});
+app.post('/FindpayStatus', (req, res) => {
+    findBillingsBy('payStatus', req.body.payStatus, res);
+});
+app.post('/FindtreatmentType', (req, res) => {
+    findBillingsBy('treatmentType', req.body.treatmentType, res);
+});
+app.post('/FindpatientBilling', (req, res) => {
+    findBillingsBy('patientBilling', req.body.patientBilling, res);
+});
+
+app.post('/FindAllBillings', (req, res) => {
     console.log("Finding billing info");
     const sql = "SELECT * FROM `Billing`";
     pool.query(sql, (err, data) => {
         if (err) {
-            console.error("Error fetching bookings:", err);
+            console.error("Error fetching billings:", err);
             res.status(500).json({ error: 'Internal Server Error' });
         } else {
-            console.log("Billing fetched successfully");
+            console.log("Bills fetched successfully");
             res.status(200).json(data);
         }
     });
