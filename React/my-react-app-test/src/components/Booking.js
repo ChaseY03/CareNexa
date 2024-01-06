@@ -38,11 +38,11 @@ function Booking() {
             await axios.post('http://localhost:3006/FindBookingID', bookingID)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        setbookingID(res.data.data);  // Set the state here
+                        setBookings(res.data.data);  // Set the state here
                         console.log(res.data);
                     }
                     else {
-                        setbookingID([]);
+                        setBookings([]);
                         console.log(res.data)
                     }
                 })
@@ -60,11 +60,11 @@ function Booking() {
             await axios.post('http://localhost:3006/FindLocation', location)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        setlocation(res.data.data);  // Set the state here
+                        setBookings(res.data.data);  // Set the state here
                         console.log(res.data);
                     }
                     else {
-                        setlocation([]);
+                        setBookings([]);
                         console.log(res.data)
                     }
                 })
@@ -82,11 +82,11 @@ function Booking() {
             await axios.post('http://localhost:3006/FindTime', time)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        settime(res.data.data);  // Set the state here
+                        setBookings(res.data.data);  // Set the state here
                         console.log(res.data);
                     }
                     else {
-                        settime([]);
+                        setBookings([]);
                         console.log(res.data)
                     }
                 })
@@ -104,11 +104,11 @@ function Booking() {
             await axios.post('http://localhost:3006/FindStaffemployeeID', StaffemployeeID)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        setStaffemployeeID(res.data.data);  // Set the state here
+                        setBookings(res.data.data);  // Set the state here
                         console.log(res.data);
                     }
                     else {
-                        setStaffemployeeID([]);
+                        setBookings([]);
                         console.log(res.data)
                     }
                 })
@@ -125,11 +125,11 @@ function Booking() {
             await axios.post('http://localhost:3006/FindpatientBooking', patientBooking)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        setpatientBooking(res.data.data);  // Set the state here
+                        setBookings(res.data.data);  // Set the state here
                         console.log(res.data);
                     }
                     else {
-                        setpatientBooking([]);
+                        setBookings([]);
                         console.log(res.data)
                     }
                 })
@@ -154,67 +154,83 @@ function Booking() {
     }
 
     return (<>
-        <head>
-            <title>CareNexa Bookings</title>
-        </head>
-        <Layout/>
+            <head>
+                <title>CareNexa Bookings</title>
+            </head>
+            <Layout/>
 
-        <main>
-            <h1>BOOKINGS</h1>
-            <form onSubmit={findAllBookings}>
-                <button type='submit' className={"search-button"}>Find all</button>
-            </form>
+            <main>
+                <h1>BOOKINGS</h1>
+                <form onSubmit={findAllBookings}>
+                    <button type='submit' className={"search-button"}>Find all</button>
+                </form>
 
-            <form action="" onSubmit={findBookingID}>
-                <div>
-                    <input type='textbox' placeholder='bookingID' name='bookingID' onChange={takeInput} autoComplete='off' required />
-                    <button type='Search' className={"search-button"}>Search</button>
-                </div>
-            </form>
+                <form action="" onSubmit={findBookingID}>
+                    <div>
+                        <input type='textbox' placeholder='bookingID' name='bookingID' onChange={takeInput} autoComplete='off' required />
+                        <button type='Search' className={"search-button"}>Search</button>
+                    </div>
+                </form>
 
-            <form action="" onSubmit={findLocation}>
-                <div>
-                    <input type='textbox' placeholder='department' name='location' onChange={takeInput} autoComplete='off' required />
-                    <button type='Search' className={"search-button"}>Search</button>
-                </div>
-            </form>
+                <form action="" onSubmit={findLocation}>
+                    <div>
+                        <input type='textbox' placeholder='department' name='location' onChange={takeInput} autoComplete='off' required />
+                        <button type='Search' className={"search-button"}>Search</button>
+                    </div>
+                </form>
 
-            <form action="" onSubmit={findTime}>
-                <div>
-                    <input type='textbox' placeholder='time' name='time' onChange={takeInput} autoComplete='off' required />
-                    <button type='Search' className={"search-button"}>Search</button>
-                </div>
-            </form>
+                <form action="" onSubmit={findTime}>
+                    <div>
+                        <input type='textbox' placeholder='time' name='time' onChange={takeInput} autoComplete='off' required />
+                        <button type='Search' className={"search-button"}>Search</button>
+                    </div>
+                </form>
 
-            <form action="" onSubmit={findStaffemployeeID}>
-                <div>
-                    <input type='textbox' placeholder='employee ID#' name='StaffemployeeID' onChange={takeInput} autoComplete='off' required />
-                    <button type='Search' className={"search-button"}>Search</button>
-                </div>
-            </form>
+                <form action="" onSubmit={findStaffemployeeID}>
+                    <div>
+                        <input type='textbox' placeholder='employee ID#' name='StaffemployeeID' onChange={takeInput} autoComplete='off' required />
+                        <button type='Search' className={"search-button"}>Search</button>
+                    </div>
+                </form>
 
-            <form action="" onSubmit={findpatientBooking}>
-                <div>
-                    <input type='textbox' placeholder='booking ref#' name='patientBooking' onChange={takeInput} autoComplete='off' required />
-                    <button type='Search' className={"search-button"}>Search</button>
-                </div>
-            </form>
+                <form action="" onSubmit={findpatientBooking}>
+                    <div>
+                        <input type='textbox' placeholder='booking ref#' name='patientBooking' onChange={takeInput} autoComplete='off' required />
+                        <button type='Search' className={"search-button"}>Search</button>
+                    </div>
+                </form>
 
-            <ul>
-                {Array.isArray(bookings) && bookings.length > 0 ? (
-                    bookings.map((Booking) => (
-                        <li
-                            key={`${Booking.bookingID}-${Booking.location}-${Booking.time}-${Booking.StaffemployeeID}-${Booking.patientBooking}`}
-                        >
-                            {Booking.bookingID} - {Booking.location} - {Booking.time} - {Booking.StaffemployeeID} - {Booking.patientBooking}                        </li>
-                    ))
-                ) : (
-                    <li>No patients found</li>
-                )}
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Department</th>
+                        <th>Time</th>
+                        <th>Staff ID</th>
+                        <th>Patient Booking</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {Array.isArray(bookings) && bookings.length > 0 ? (
+                        bookings.map((Booking) => (
+                            <tr key={Booking.bookingID}>
+                                <td>{Booking.bookingID}</td>
+                                <td>{Booking.location}</td>
+                                <td>{Booking.time}</td>
+                                <td>{Booking.StaffemployeeID}</td>
+                                <td>{Booking.patientBooking}</td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="5">No bookings found</td>
+                        </tr>
+                    )}
+                    </tbody>
+                </table>
 
-            </ul>
-        </main>
-    </>
+            </main>
+        </>
     )
 };
 

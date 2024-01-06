@@ -173,7 +173,7 @@ function Patients() {
                     <button type='Search' className={"search-button"}>Search</button>
                 </div>
             </form>
-            
+
             <table>
                 <thead>
                 <tr>
