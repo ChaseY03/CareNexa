@@ -173,20 +173,7 @@ app.post('/FindAllBillings', (req, res) => {
     });
 })
 
-//Server Listening Log
-app.set('port'|| 3006);
-app.listen(3006, () =>{
-    console.log("Listening");
-})
-
-//Server Connected Log
-conn.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-})
-
-
-
+//ADD BOOKING SQL
 app.post('/CreateBookingEntry', async (req, res) => {
     try {
         const {location, time, StaffemployeeID, patientBooking } = req.body;
@@ -204,36 +191,16 @@ app.post('/CreateBookingEntry', async (req, res) => {
     }
 });
 
-/*
-const mysql = require('promise-mysql');
-const fs = require('fs');
-const express = require("express");
-const cors = require("cors");
 
-const app = express();
-app.use(express.json);
+//Server Listening Log
+app.set('port'|| 3006);
+app.listen(3006, () =>{
+    console.log("Listening");
+})
 
-// createTcpPool initializes a TCP connection pool for a Cloud SQL
-// instance of MySQL.
-const createTcpPool = async config => {
-    // Note: Saving credentials in environment variables is convenient, but not
-    // secure - consider a more secure solution such as
-    // Cloud Secret Manager (https://cloud.google.com/secret-manager) to help
-    // keep secrets safe.
-    const dbConfig = {
-        host: '35.224.98.153', // e.g. '127.0.0.1'
-        port: '3306', // e.g. '3306'
-        user: 'carenexa', // e.g. 'my-db-user'
-        password: 'carenexa2024', // e.g. 'my-db-password'
-        database: 'carenexa-db', // e.g. 'my-database'
-        // ... Specify additional properties here.
-        ...config,
-    };
-    app.set('port', process.env.PORT || 3006);
-    app.listen(3006, () =>{
-        console.log("Listening");
+//Server Connected Log
+conn.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+})
 
-    })
-    // Establish a connection to the database.
-    return mysql.createPool(dbConfig);
-};*/
