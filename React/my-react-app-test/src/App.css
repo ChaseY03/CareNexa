@@ -115,6 +115,11 @@ button {
   text-align: center;
   color: white;
   fontstyle: bold;
+  margin: 0.5rem;
+  height: 5vh;
+  min-height: 40px; /* Set your desired minimum height */
+  border-radius: 2px;
+  box-sizing: border-box;
 }
 
 .sidenav{
