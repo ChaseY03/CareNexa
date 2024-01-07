@@ -3,7 +3,7 @@
 
 CareNexa is a cloud application that is deployed on the google cloud platform. This application serves as a data management system for healthcare workers.
 
-There is a secure log in system, bookings page, patient records page, billings page, and the ability to modify their personal account details.
+There is a secure log in system, bookings page, patient records page, billings page, and the ability to data to the database (currently new bookings only).
 
 
 
