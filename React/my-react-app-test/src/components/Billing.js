@@ -34,12 +34,10 @@ function Billing() {
             await axios.post('http://localhost:3006/FindtreatmentID', treatmentID)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        setBills(res.data.data);  // Set the state here
-                        console.log(res.data);
+                        setBills(res.data.data);
                     }
                     else {
                         setBills([]);
-                        console.log(res.data)
                     }
                 })
                 .catch(err => console.log(err))
@@ -56,12 +54,10 @@ function Billing() {
             await axios.post('http://localhost:3006/Findcost', cost)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        setBills(res.data.data);  // Set the state here
-                        console.log(res.data);
+                        setBills(res.data.data);
                     }
                     else {
                         setBills([]);
-                        console.log(res.data)
                     }
                 })
                 .catch(err => console.log(err))
@@ -78,12 +74,10 @@ function Billing() {
             await axios.post('http://localhost:3006/FindpayStatus', payStatus)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        setBills(res.data.data);  // Set the state here
-                        console.log(res.data);
+                        setBills(res.data.data);
                     }
                     else {
                         setBills([]);
-                        console.log(res.data)
                     }
                 })
                 .catch(err => console.log(err))
@@ -100,12 +94,10 @@ function Billing() {
             await axios.post('http://localhost:3006/FindtreatmentType', treatmentType)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        setBills(res.data.data);  // Set the state here
-                        console.log(res.data);
+                        setBills(res.data.data);
                     }
                     else {
                         setBills([]);
-                        console.log(res.data)
                     }
                 })
                 .catch(err => console.log(err))
@@ -122,12 +114,10 @@ function Billing() {
             await axios.post('http://localhost:3006/FindpatientBilling', patientBilling)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        setBills(res.data.data);  // Set the state here
-                        console.log(res.data);
+                        setBills(res.data.data); 
                     }
                     else {
                         setBills([]);
-                        console.log(res.data)
                     }
                 })
                 .catch(err => console.log(err))
@@ -143,7 +133,6 @@ function Billing() {
         await axios.post('http://localhost:3006/FindAllBillings')
             .then(response => {
                 setBills(response.data);
-                console.log("loading data")
             })
             .catch(error => {
                 console.error('Error fetching Bills:', error);

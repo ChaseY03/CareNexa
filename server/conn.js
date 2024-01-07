@@ -25,8 +25,7 @@ const pool = mysql.createPool({
 
 //LOGIN SQL
 app.post('/Staff', (req, res)=>{
-    console.log("Finding login info")
-    const sql = "SELECT * FROM Staff WHERE `employeeID` = ? AND `lastName` = ?";
+    const sql = 'SELECT * FROM Staff WHERE `employeeID` = ? AND `lastName` = ?';
     pool.query(sql,[req.body.employeeID, req.body.lastName],(err, data) => {
         if (err){
             return res.json("Error");
@@ -46,14 +45,11 @@ const findBookingBy = (field, value, res) => {
     console.log(`Finding booking by ${field}`);
     const sql = `SELECT * FROM \`Booking\` WHERE \`${field}\` = ?`;
     const queryValue = [value];
-
     pool.query(sql, queryValue, (err, data) => {
         if (err) {
-            console.error('Database error:', err);
             return res.status(500).json({ error: 'Internal Server Error' });
         }
         if (data.length > 0) {
-            console.log("Bookings fetched successfully");
             return res.status(200).json({ status: "Found", data });
         }
         else {
@@ -80,14 +76,11 @@ app.post('/FindBookingID', (req, res) => {
 });
 
 app.post('/FindAllBookings', (req, res) => {
-    console.log("Finding booking info");
     const sql = "SELECT * FROM `Booking`";
     pool.query(sql, (err, data) => {
         if (err) {
-            console.error("Error fetching bookings:", err);
             res.status(500).json({ error: 'Internal Server Error' });
         } else {
-            console.log("Patients fetched successfully");
             res.status(200).json(data);
         }
     });
@@ -95,17 +88,13 @@ app.post('/FindAllBookings', (req, res) => {
 
 //PATIENT SQL
 const findPatientBy = (field, value, res) => {
-    console.log(`Finding patient by ${field}`);
     const sql = `SELECT * FROM \`Patient\` WHERE \`${field}\` = ?`;
     const queryValue = [value];
-
     pool.query(sql, queryValue, (err, data) => {
         if (err) {
-            console.error('Database error:', err);
             return res.status(500).json({ error: 'Internal Server Error' });
         }
         if (data.length > 0) {
-            console.log("Patients fetched successfully");
             return res.status(200).json({ status: "Found", data });
         }
         else {
@@ -129,14 +118,11 @@ app.post('/FindPatientDOB', (req, res) => {
 });
 
 app.post('/FindAllPatient', (req, res) => {
-    console.log("Finding patient info");
     const sql = "SELECT * FROM `Patient`";
     pool.query(sql, (err, data) => {
         if (err) {
-            console.error("Error fetching patients:", err);
             res.status(500).json({ error: 'Internal Server Error' });
         } else {
-            console.log("Patients fetched successfully");
             res.status(200).json(data);
         }
     });
@@ -144,17 +130,13 @@ app.post('/FindAllPatient', (req, res) => {
 
 //BILLING SQL
 const findBillingsBy = (field, value, res) => {
-    console.log(`Finding billings by ${field}`);
     const sql = `SELECT * FROM \`Billing\` WHERE \`${field}\` = ?`;
     const queryValue = [value];
-
     pool.query(sql, queryValue, (err, data) => {
         if (err) {
-            console.error('Database error:', err);
             return res.status(500).json({ error: 'Internal Server Error' });
         }
         if (data.length > 0) {
-            console.log("Bookings fetched successfully");
             return res.status(200).json({ status: "Found", data });
         }
         else {
@@ -181,14 +163,11 @@ app.post('/FindpatientBilling', (req, res) => {
 });
 
 app.post('/FindAllBillings', (req, res) => {
-    console.log("Finding billing info");
     const sql = "SELECT * FROM `Billing`";
     pool.query(sql, (err, data) => {
         if (err) {
-            console.error("Error fetching billings:", err);
             res.status(500).json({ error: 'Internal Server Error' });
         } else {
-            console.log("Bills fetched successfully");
             res.status(200).json(data);
         }
     });
@@ -208,16 +187,19 @@ conn.connect(function(err) {
 
 
 
-app.post('/CreateBillingEntry', async (req, res) => {
+app.post('/CreateBookingEntry', async (req, res) => {
     try {
-        // Insert the new billing entry into the database using the pool
-        const result = await pool.query('INSERT INTO Billing SET ?', req.body);
-
-        // Respond with the created billing entry
-        res.status(201).json(result);
+        const {location, time, StaffemployeeID, patientBooking } = req.body;
+        const sql = 'INSERT INTO `Booking` (location, time, StaffemployeeID, patientBooking) VALUES (?, ?, ?, ?)';
+        pool.query(sql, [location, time, StaffemployeeID, patientBooking], (err, results) => {
+            if (err) {
+                res.status(500).json({ status: 'Error' });
+            } else {
+                res.status(200).json({ status: 'Added' });
+            }
+        });
     }
     catch (error) {
-        console.error('Error creating billing entry:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });

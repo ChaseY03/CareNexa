@@ -24,22 +24,21 @@ const Layout = () => {
                             <Link to="/Billing">Billing</Link>
                         </li>
                         <li>
-                            <Link to="/Settings">Settings</Link>
+                            <Link to="/AddData">Add data</Link>
                         </li>
 
                     </ul>
                 </nav>
 
                 <li className={"logout"}>
-                </li>
-
-                <nav>
+                <nav >
                     <ul>
                         <li>
                             <Link to="/">Logout</Link>
                         </li>
                     </ul>
                 </nav>
+                </li>
             </div>
         </div>
 

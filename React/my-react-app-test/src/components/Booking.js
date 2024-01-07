@@ -38,12 +38,10 @@ function Booking() {
             await axios.post('http://localhost:3006/FindBookingID', bookingID)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        setBookings(res.data.data);  // Set the state here
-                        console.log(res.data);
+                        setBookings(res.data.data);
                     }
                     else {
                         setBookings([]);
-                        console.log(res.data)
                     }
                 })
                 .catch(err => console.log(err))
@@ -60,12 +58,10 @@ function Booking() {
             await axios.post('http://localhost:3006/FindLocation', location)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        setBookings(res.data.data);  // Set the state here
-                        console.log(res.data);
+                        setBookings(res.data.data);
                     }
                     else {
                         setBookings([]);
-                        console.log(res.data)
                     }
                 })
                 .catch(err => console.log(err))
@@ -82,12 +78,10 @@ function Booking() {
             await axios.post('http://localhost:3006/FindTime', time)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        setBookings(res.data.data);  // Set the state here
-                        console.log(res.data);
+                        setBookings(res.data.data);
                     }
                     else {
                         setBookings([]);
-                        console.log(res.data)
                     }
                 })
                 .catch(err => console.log(err))
@@ -104,12 +98,10 @@ function Booking() {
             await axios.post('http://localhost:3006/FindStaffemployeeID', StaffemployeeID)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        setBookings(res.data.data);  // Set the state here
-                        console.log(res.data);
+                        setBookings(res.data.data);
                     }
                     else {
                         setBookings([]);
-                        console.log(res.data)
                     }
                 })
                 .catch(err => console.log(err))
@@ -125,12 +117,10 @@ function Booking() {
             await axios.post('http://localhost:3006/FindpatientBooking', patientBooking)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        setBookings(res.data.data);  // Set the state here
-                        console.log(res.data);
+                        setBookings(res.data.data);
                     }
                     else {
                         setBookings([]);
-                        console.log(res.data)
                     }
                 })
                 .catch(err => console.log(err))
@@ -146,7 +136,6 @@ function Booking() {
         await axios.post('http://localhost:3006/FindAllBookings')
             .then(response => {
                 setBookings(response.data);
-                console.log("loading data")
             })
             .catch(error => {
                 console.error('Error fetching appointments:', error);

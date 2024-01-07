@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Billing from "./components/Billing";
 import Patients from "./components/Patient";
 import Booking from "./components/Booking";
-import Settings from "./components/Settings";
+import AddData from "./components/AddData";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
             <Route path="Booking" element={<Booking />} />
             <Route path="Patients" element={<Patients />} />
             <Route path="Billing" element={<Billing />} />
-            <Route path="Settings" element={<Settings />} />
+            <Route path="AddData" element={<AddData />} />
             <Route path="Logout" element={<Login />} />
         </Routes>
       </BrowserRouter>

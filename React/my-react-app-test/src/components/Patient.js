@@ -31,12 +31,10 @@ function Patients() {
             await axios.post('http://localhost:3006/FindPatient', patientID)
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
-                        setPatients(res.data.data);  // Set the state here
-                        console.log(res.data);
+                        setPatients(res.data.data);
                     }
                     else {
                         setPatients([]);
-                        console.log(res.data)
                     }
                 })
                 .catch(err => console.log(err))
@@ -54,11 +52,9 @@ function Patients() {
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
                         setPatients(res.data.data);
-                        console.log(res.data);
                     }
                     else {
                         setPatients([]);
-                        console.log(res.data)
                     }
                 })
                 .catch(err => console.log(err))
@@ -76,11 +72,9 @@ function Patients() {
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
                         setPatients(res.data.data);
-                        console.log(res.data);
                     }
                     else {
                         setPatients([]);
-                        console.log(res.data)
                     }
                 })
                 .catch(err => console.log(err))
@@ -98,11 +92,9 @@ function Patients() {
                 .then(res => {
                     if (res.data && res.data.status === "Found") {
                         setPatients(res.data.data);
-                        console.log(res.data);
                     }
                     else {
                         setPatients([]);
-                        console.log(res.data)
                     }
                 })
                 .catch(err => console.log(err))
@@ -118,7 +110,6 @@ function Patients() {
         await axios.post('http://localhost:3006/FindAllPatient')
             .then(response => {
                 setPatients(response.data);
-                console.log("loading data")
             })
             .catch(error => {
                 console.error('Error fetching appointments:', error);
